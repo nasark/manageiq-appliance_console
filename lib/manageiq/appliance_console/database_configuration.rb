@@ -236,18 +236,6 @@ FRIENDLY
       end
     end
 
-    def start_evm
-      pid = fork do
-        begin
-          EvmServer.start(:enable => true)
-        rescue => e
-          logger.error("Failed to enable and start evmserverd service: #{e.message}")
-          logger.error(e.backtrace.join("\n"))
-        end
-      end
-      Process.detach(pid)
-    end
-
     private
 
     def self.rails_env
